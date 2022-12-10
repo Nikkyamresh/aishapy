@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+
+		<title>AISHA</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="theme-color" content="#0F141F">
+		<meta name="description" content="Artificial Intelligence Super Human Assistant "/>
+		<link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/png">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+		<noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
+<style>
+body {
+    background-image: url("{{ url_for('static', filename='images/bg.jpg') }}");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 50% 50%;
+}
+</style>
+	</head>
+	<body>
+ 			<div id="wrapper">
+
+ 					<header id="header">
+						<div class="logo">
+							<span class="icon fa-code"></span>
+						</div>
+						<div class="content">
+							<div class="inner">
+								<form id="form" onsubmit="return false">
+									<input autofocus autocomplete="off"   style="width:50vw" type=text value="" placeholder="Hi There" name=a> <br>
+									<p><button id="calculate">Send</button>
+										<a class="button" id="say"><span class="icon fa-microphone"></span></a></p></form>
+									<!--<img id="img" width="350px"  src="{{url_for('static', filename='play.jpg')}}"/>-->
+ 									<p id=result><br>Ask me a Questian.</p>
+							</div>
+						</div>
+						<nav>
+							<ul>
+								<li><a href="#about">About</a></li>
+								<li><a href="#Team">Team</a></li>
+								<li><a href="#contact">Contact</a></li>
+							</ul>
+						</nav>
+					</header>
+
+					<div id="main">
+ 							<article id="about">
+								<h2 class="major">About</h2>
+
+								<p>AISHA : Artificial Intelligence Super Human Assistant</p>
+							</article>
+
+							<article id="Team">
+                                                                <h2 class="major">Team</h2>
+																																<ul>
+																																	<li><b>Hari Kishore</b></li>
+																																	<li>Raushan Kumar</li>
+																																	<li>Nikky Amresh</li>
+																																</ul>
+                                                        </article>
+
+							<article id="contact">
+								<h2 class="major">Contact</h2>
+								<p>We want to hear from you. Wether you found a security flaw or want us to listen to your ideas - our ears and hearts are open. Contact us at <a href="mailto:nikkyamresh8@gmail.com">nikkyamresh8@gmail.com</a> with any questions or concerns you may have.</p>
+							</article>
+
+					</div>
+
+					<footer id="footer">
+
+					</footer>
+
+			</div>
+
+			<div id="bg"></div>
+
+			<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/skel.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/util.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+			<script src="//code.responsivevoice.org/responsivevoice.js"></script>
+			<script>window.jQuery || document.write('<script src="{{
+				url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
+				<script type=text/javascript>
+				$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+			</script>
+			<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+	</body>
+
+</html>
