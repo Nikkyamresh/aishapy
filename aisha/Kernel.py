@@ -97,7 +97,7 @@ class Kernel:
 
     def bootstrap(self, brainFile = None, learnFiles = [], commands = [],
                   chdir=None):
-        start = time.clock()
+        start = time.process_time()
         if brainFile:
             self.loadBrain(brainFile)
 
@@ -121,7 +121,7 @@ class Kernel:
                 os.chdir( prev )
 
         if self._verboseMode:
-            print( "Kernel bootstrap completed in %.2f seconds" % (time.clock() - start) )
+            print( "Kernel bootstrap completed in %.2f seconds" % (time.process_time() - start) )
 
     def verbose(self, isVerbose = True):
         self._verboseMode = isVerbose
@@ -142,18 +142,18 @@ class Kernel:
 
     def loadBrain(self, filename):
         if self._verboseMode: print( "Loading brain from %s..." % filename, end="" )
-        start = time.clock()
+        start = time.process_time()
         self._brain.restore(filename)
         if self._verboseMode:
-            end = time.clock() - start
+            end = time.process_time() - start
             print( "done (%d categories in %.2f seconds)" % (self._brain.numTemplates(), end) )
 
     def saveBrain(self, filename):
         if self._verboseMode: print( "Saving brain to %s..." % filename, end="")
-        start = time.clock()
+        start = time.process_time()
         self._brain.save(filename)
         if self._verboseMode:
-            print( "done (%.2f seconds)" % (time.clock() - start) )
+            print( "done (%.2f seconds)" % (time.process_time() - start) )
 
     def getPredicate(self, name, sessionID = _globalSessionID):
         try: return self._sessions[sessionID][name]
@@ -214,7 +214,7 @@ class Kernel:
     def learn(self, filename):
         for f in glob.glob(filename):
             if self._verboseMode: print( "Loading %s..." % f, end="")
-            start = time.clock()
+            start = time.process_time()
             parser = create_parser()
             handler = parser.getContentHandler()
             handler.setEncoding(self._textEncoding)
@@ -226,7 +226,7 @@ class Kernel:
             for key,tem in handler.categories.items():
                 self._brain.add(key,tem)
             if self._verboseMode:
-                print( "done (%.2f seconds)" % (time.clock() - start) )
+                print( "done (%.2f seconds)" % (time.process_time() - start) )
 
     def respond(self, input_, sessionID = _globalSessionID):
         if len(input_) == 0:
